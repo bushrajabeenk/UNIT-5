@@ -34,3 +34,21 @@ var masai = {
     },
     isMarried: true
 };
+var Jenna = {
+    username: "Jenna",
+    age: 24,
+    animal: {
+        hasLegs: true,
+        veg: true
+    },
+    isMarried: true
+};
+var myDog = {
+    food: "pedigree",
+    hasWings: true,
+    noOfLags: 4
+};
+var dog = {
+    name: "tommy",
+    age: 3
+};

@@ -34,6 +34,8 @@ const sum = (x: number, y: number): number => {
 
 let output = add(1, 2);
 
+// CUSTOM TYPES
+
 type Human = {
   hasLegs: boolean;
   veg: boolean;
@@ -42,9 +44,17 @@ type Human = {
 // animal is of type Human, which in turn is an object
 type User = {
   username: string;
-  age: number;
+  age?: number;
   isMarried: boolean;
   animal: Human;
+  salary?: number;
+  // if i  dont want to include salary data in
+  //Jenna user, then i should give it as ?,
+  // ie salary?: number, this way we dont have
+  // to compulsorily give the salary data in Jenna
+  // user profile, ie salary is optional
+  // typescript will not give error if you give ?
+  // it is considered optional
 };
 
 // masai is of type User
@@ -56,4 +66,50 @@ const masai: User = {
     veg: true,
   },
   isMarried: true,
+  // ctrl space will give all these key value pairs
+};
+
+const Jenna: User = {
+  username: "Jenna",
+  age: 24,
+  animal: {
+    hasLegs: true,
+    veg: true,
+  },
+  isMarried: true,
+};
+
+//another way using Interface
+
+// interface
+interface Pet {
+  name: string;
+  age: number;
+  owner?: Human;
+}
+
+// inheritance
+interface Animal {
+  noOfLags: number;
+  hasWings: boolean;
+}
+
+interface Dog extends Animal {
+  // can have its own properties + properties
+  // from Animal
+  food: string;
+}
+
+const myDog: Dog = {
+  food: "pedigree",
+  hasWings: true,
+  noOfLags: 4,
+  //on ctrl space, we get all the properties
+  // from Dog as well as from Animal
+};
+
+const dog: Pet = {
+  name: "tommy",
+  age: 3,
+  // here owner is optional
 };
