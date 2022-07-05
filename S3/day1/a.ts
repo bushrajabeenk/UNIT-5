@@ -79,28 +79,34 @@ const Jenna: User = {
   isMarried: true,
 };
 
-//another way using Interface
+//-----------------------------------------------------------------------
 
+//another way is by using Interface
 // interface
 interface Pet {
   name: string;
   age: number;
   owner?: Human;
 }
+const dog: Pet = {
+  name: "tommy",
+  age: 3,
+  // here owner is optional
+};
 
-// inheritance
-interface Animal {
+// --------------------------------------------------------------------------
+
+// inheritance - using interface
+interface Animal1 {
   noOfLags: number;
   hasWings: boolean;
 }
-
-interface Dog extends Animal {
+interface Dog1 extends Animal1 {
   // can have its own properties + properties
   // from Animal
   food: string;
 }
-
-const myDog: Dog = {
+const myDog1: Dog1 = {
   food: "pedigree",
   hasWings: true,
   noOfLags: 4,
@@ -108,8 +114,58 @@ const myDog: Dog = {
   // from Dog as well as from Animal
 };
 
-const dog: Pet = {
-  name: "tommy",
-  age: 3,
-  // here owner is optional
+//-------------------------------------------------------------------------------------------
+
+// Composition - in type
+// exact same thing as above (INHERITANCE) using types
+type Animal2 = {
+  noOfLags: number;
+  hasWings: boolean;
 };
+type Dog2 = {
+  food: string;
+};
+// Dog2 & Animal2 ia called as composition
+// here both Dog2 and Animal2properties are included
+const myDog2: Dog2 & Animal2 = {
+  food: "pedigree",
+  hasWings: true,
+  noOfLags: 3,
+};
+// here | - OR need not take all the properties from
+// both Dog2 amd Animal2, it can skip some
+const myDog3: Dog2 | Animal2 = {
+  food: "pedigree",
+  hasWings: true,
+  noOfLags: 3,
+};
+
+//---------------------------------------------------------------------------------------
+
+// array of objects
+type Dog4 = {
+  food: string;
+};
+
+const myDog4: Dog4 = {
+  food: "pedigree",
+};
+
+const myPets1: number[] = [1, 2, 3, 4, 5];
+
+// creating array of objects
+const myPets2: Dog4[] = [{ food: "pedigree" }];
+
+type Animal4 = {
+  noOfLags: number;
+  hasWings: boolean;
+};
+
+// composition of array of objects
+const myPets3: Dog4[] | Animal4[] = [{ food: "pedigree" }];
+// can only store either Dog4 or Animal4
+
+
+// composition of array of objects
+// const myPets4: Dog4[] & Animal4[] = [{ food: "pedigree" }, {}];
+// can store both Dog4 and Animal4
