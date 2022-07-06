@@ -1,10 +1,13 @@
 import React from "react";
 
 type Buttonprops = {
-  children: any;
+  //children: any;
+  children: React.ReactNode;
   color: string;
-  leftIcon: any;
-  rightIcon: any;
+  leftIcon?: JSX.Element;
+  rightIcon?: JSX.Element;
+  //leftIcon?: any;
+  //rightIcon?: any;
 };
 const Button = (props: Buttonprops) => {
   return (
