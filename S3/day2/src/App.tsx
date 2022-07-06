@@ -24,7 +24,7 @@ function App() {
     axios
       .get("http://localhost:8080/todos")
       .then((response: AxiosResponse<Todo[]>) => {
-        const { data } = response;
+        const data = response.data;
         console.log(data);
         setTodos(data);
       });
