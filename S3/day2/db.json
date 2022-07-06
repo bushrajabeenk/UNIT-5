@@ -1,3 +1,9 @@
 {
-  "todos": []
+  "todos": [
+    {
+      "title": "Learn Typescript",
+      "isCompleted": false,
+      "id": 1
+    }
+  ]
 }

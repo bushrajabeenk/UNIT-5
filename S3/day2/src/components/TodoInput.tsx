@@ -5,11 +5,7 @@ type TodoProps = {
 };
 
 const TodoInput = ({ handleAdd }: TodoProps) => {
-  const [value, setValue] = useState("");
-
-  const click = () => {
-    handleAdd(value);
-  };
+  const [newTodo, setNewTodo] = useState("");
 
   return (
     <div>
@@ -17,12 +13,12 @@ const TodoInput = ({ handleAdd }: TodoProps) => {
         <input
           type="text"
           placeholder="Enter todo..."
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
         />
       </div>
       <div>
-        <button onClick={click}>ADD</button>
+        <button onClick={() => handleAdd(newTodo)}>ADD</button>
       </div>
       <hr />
     </div>

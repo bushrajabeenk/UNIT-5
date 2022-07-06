@@ -8,15 +8,15 @@ import axios, { AxiosResponse } from "axios";
 
 export type Todo = {
   id: string;
-  value: string;
+  text: string;
   isCompleted: boolean;
 };
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
 
-  const handleAdd = (value: string) => {
-    const payload = { title: value, isCompleted: false };
+  const handleAdd = (newTodo: string) => {
+    const payload = { text: newTodo, isCompleted: false };
     axios.post("http://localhost:8080/todos", payload).then(getTodos);
   };
 

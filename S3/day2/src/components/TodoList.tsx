@@ -10,7 +10,7 @@ const TodoList = ({ data }: TodoListProps) => {
       <h1>TodoList</h1>
       <div>
         {data.map((todo) => {
-          return <p key={todo.id}>{todo.value}</p>;
+          return <p key={todo.id}>{todo.text}</p>;
         })}
       </div>
     </div>
