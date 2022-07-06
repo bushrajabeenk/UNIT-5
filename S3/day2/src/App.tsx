@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 // import Button from "./Button";
 // import { FaBeer } from "react-icons/fa";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
+import { postTodo, getTodos, Todo } from "./actions";
 
 function App() {
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const handleAdd = (value: string) => {
+    postTodo({
+      value,
+      isCompleted: false,
+    }).then((newTodo) => {
+      setTodos([...todos, newTodo]);
+    });
+  };
+
+  useEffect(() => {
+    getTodos().then((d) => setTodos(d));
+  }, []);
+
   return (
     <div className="App">
       {/* <div>
@@ -29,8 +45,8 @@ function App() {
       </div> */}
 
       <div>
-        <TodoInput />
-        <TodoList />
+        <TodoInput handleAdd={handleAdd} />
+        <TodoList data={todos} />
       </div>
     </div>
   );

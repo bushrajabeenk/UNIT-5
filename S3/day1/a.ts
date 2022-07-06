@@ -166,7 +166,23 @@ type Animal4 = {
 const myPets3: Dog4[] | Animal4[] = [{ food: "pedigree" }];
 // can only store either Dog4 or Animal4
 
-
 // composition of array of objects
 // const myPets4: Dog4[] & Animal4[] = [{ food: "pedigree" }, {}];
 // can store both Dog4 and Animal4
+
+// ---------------------------------------------------------------------------------
+
+// GENERICS
+// instead of T anythingcan be written
+function concat<T>(a: T, b: T) {
+  console.log(a, b);
+}
+
+// here T becomes number
+concat<number>(1, 2);
+
+// here T becomes string
+concat<string>("1", "2");
+
+// here T becomes boolean
+concat<boolean>(true, false);

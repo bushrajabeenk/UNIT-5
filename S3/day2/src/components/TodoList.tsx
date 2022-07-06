@@ -1,9 +1,18 @@
 import React from "react";
 
-const TodoList = () => {
+type TodoListProps = {
+  data: any[];
+};
+
+const TodoList = ({ data }: TodoListProps) => {
   return (
     <div>
       <h1>TodoList</h1>
+      <div>
+        {data.map((todo) => {
+          <p key={todo.id}>{todo.value}</p>;
+        })}
+      </div>
     </div>
   );
 };
