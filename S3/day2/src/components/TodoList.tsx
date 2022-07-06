@@ -1,7 +1,7 @@
-import React from "react";
+import { Todo } from "../App";
 
 type TodoListProps = {
-  data: any[];
+  data: Todo[];
 };
 
 const TodoList = ({ data }: TodoListProps) => {
@@ -10,7 +10,7 @@ const TodoList = ({ data }: TodoListProps) => {
       <h1>TodoList</h1>
       <div>
         {data.map((todo) => {
-          <p key={todo.id}>{todo.value}</p>;
+          return <p key={todo.id}>{todo.value}</p>;
         })}
       </div>
     </div>

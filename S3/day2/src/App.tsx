@@ -1,25 +1,37 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 // import Button from "./Button";
 // import { FaBeer } from "react-icons/fa";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
-import { postTodo, getTodos, Todo } from "./actions";
+import axios, { AxiosResponse } from "axios";
+
+export type Todo = {
+  id: string;
+  value: string;
+  isCompleted: boolean;
+};
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
 
   const handleAdd = (value: string) => {
-    postTodo({
-      value,
-      isCompleted: false,
-    }).then((newTodo) => {
-      setTodos([...todos, newTodo]);
-    });
+    const payload = { title: value, isCompleted: false };
+    axios.post("http://localhost:8080/todos", payload).then(getTodos);
+  };
+
+  const getTodos = () => {
+    axios
+      .get("http://localhost:8080/todos")
+      .then((response: AxiosResponse<Todo[]>) => {
+        const { data } = response;
+        console.log(data);
+        setTodos(data);
+      });
   };
 
   useEffect(() => {
-    getTodos().then((d) => setTodos(d));
+    getTodos();
   }, []);
 
   return (
