@@ -5,13 +5,13 @@ type CounterProps = {
 };
 
 const Counter = (props: CounterProps) => {
-  const { init } = props;
+  const { init } = props; //default destructuring
 
   const [counter, setCounter] = useState(init);
 
   return (
     <div>
-      <h3>Counter</h3>
+      <h3>Counter: {counter}</h3>
       <button onClick={() => setCounter(counter + 1)}>Add</button>
     </div>
   );
