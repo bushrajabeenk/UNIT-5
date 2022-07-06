@@ -24,6 +24,7 @@ var sum = function (x, y) {
     return x + y;
 };
 var output = add(1, 2);
+console.log(output);
 // masai is of type User
 var masai = {
     username: "Masaischool",

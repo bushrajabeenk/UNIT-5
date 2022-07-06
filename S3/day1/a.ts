@@ -33,6 +33,7 @@ const sum = (x: number, y: number): number => {
 };
 
 let output = add(1, 2);
+console.log(output);
 
 // CUSTOM TYPES
 
