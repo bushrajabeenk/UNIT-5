@@ -2,8 +2,8 @@ import React from "react";
 import "./App.css";
 // import Button from "./Button";
 // import { FaBeer } from "react-icons/fa";
-import TodoInput from "./TodoInput";
-import TodoList from "./TodoList";
+import TodoInput from "./components/TodoInput";
+import TodoList from "./components/TodoList";
 
 function App() {
   return (
