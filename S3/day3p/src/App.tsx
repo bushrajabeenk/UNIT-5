@@ -1,5 +1,5 @@
 import "./App.css";
-import useTimeout from "./hooks/useTimeout";
+import {useTimeout} from "./hooks/useTimeout";
 
 function App() {
   const toShow = useTimeout(5);

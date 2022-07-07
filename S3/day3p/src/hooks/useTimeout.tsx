@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useTimeout = (delay: number) => {
+export const useTimeout = (delay: number) => {
   const [toShow, setToShow] = useState(false);
 
   useEffect(() => {
@@ -13,5 +13,3 @@ const useTimeout = (delay: number) => {
 
   return toShow;
 };
-
-export default useTimeout;
