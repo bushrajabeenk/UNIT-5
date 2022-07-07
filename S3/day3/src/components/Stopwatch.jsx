@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const Stopwatch = () => {
   const timerId = useRef();
@@ -22,6 +22,13 @@ const Stopwatch = () => {
     timerId.current = null;
     setTime(0);
   };
+
+  useEffect(() => {
+    // cleanup
+    return () => {
+      clearInterval(timerId.current);
+    };
+  }, []);
 
   return (
     <div>
