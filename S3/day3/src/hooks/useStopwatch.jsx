@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from "react";
+import useCustomState from "./useCustomState";
 
 const useStopwatch = () => {
   const timerId = useRef();
-  const [time, setTime] = useState(0);
+  //   const [time, setTime] = useState(0);
+  const [time, setTime] = useCustomState(0);
 
   const start = () => {
     if (!timerId.current) {
