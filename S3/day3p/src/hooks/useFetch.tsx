@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { User } from "../App";
 import axios from "axios";
 
-export const useFetch = (url: string, params: object) => {
+export const useFetch = (url: string, params: Record<string, unknown>) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState<User[]>([]);
@@ -23,7 +23,7 @@ export const useFetch = (url: string, params: object) => {
         setLoading(false);
         setError(true);
       });
-  }, []);
+  }, [params.q]);
 
   return { loading, data, error };
 };
