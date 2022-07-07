@@ -5,7 +5,7 @@ function App() {
   const toShow = useTimeout(5);
 
   if (!toShow) {
-    return "Waiting for timer";
+    return <div>Waiting for timer</div>;
   }
 
   return (
