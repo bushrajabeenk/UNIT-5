@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { useFetch } from "./hooks/useFetch";
 
 const URL = "https://api.github.com/search/users";
@@ -26,18 +26,6 @@ function App() {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button
-        onClick={() => {
-          axios.get(URL, {
-            params: {
-              per_page: 5,
-              q: text,
-            },
-          });
-        }}
-      >
-        Search
-      </button>
       <div>
         {loading ? (
           <div>Loading...</div>
