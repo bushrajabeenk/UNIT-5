@@ -1,48 +1,16 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
+import useStopwatch from "./../hooks/useStopwatch";
 
 const Stopwatch = () => {
-  const timerId = useRef();
-  const [time, setTime] = useState(0);
-
-  const start = () => {
-    if (!timerId.current) {
-      timerId.current = setInterval(() => {
-        setTime((time) => time + 1);
-      }, 1000);
-    }
-  };
-
-  const pause = () => {
-    clearInterval(timerId.current);
-    timerId.current = null;
-  };
-
-  const reset = () => {
-    clearInterval(timerId.current);
-    timerId.current = null;
-    setTime(0);
-  };
-
-  useEffect(() => {
-    // cleanup
-    return () => {
-      clearInterval(timerId.current);
-    };
-  }, []);
+  const { time, start, pause, reset } = useStopwatch();
 
   return (
     <div>
       <h1>{time}</h1>
       <div>
-        <button onClick={start} disabled={time > 0}>
-          Start
-        </button>
-        <button onClick={pause} disabled={!timerId.current}>
-          Pause
-        </button>
-        <button onClick={reset} disabled={!timerId.current}>
-          Reset
-        </button>
+        <button onClick={start}>Start</button>
+        <button onClick={pause}>Pause</button>
+        <button onClick={reset}>Reset</button>
       </div>
     </div>
   );
