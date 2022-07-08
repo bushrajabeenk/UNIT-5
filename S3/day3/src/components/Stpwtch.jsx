@@ -2,6 +2,9 @@ import { useState, useRef, useEffect } from "react";
 
 const Stpwtch = () => {
   const timerId = useRef();
+  // useRef provides .current object
+  console.log(timerId)
+
   const [time, setTime] = useState(0);
 
   const start = () => {
@@ -24,7 +27,8 @@ const Stpwtch = () => {
   };
 
   useEffect(() => {
-    // cleanup
+    // cleanup function is used when we dont want the timer to 
+    // keep running if we remove the App itself from UI
     return () => {
       clearInterval(timerId.current);
     };
