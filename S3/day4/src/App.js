@@ -19,6 +19,7 @@ function App() {
 
   const handleClick = () => {
     let res = memoisedValue;
+    // let res = fibo(val);
     console.log(res);
     setAns(res);
   };
