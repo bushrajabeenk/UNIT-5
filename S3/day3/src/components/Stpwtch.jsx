@@ -28,7 +28,16 @@ const Stpwtch = () => {
 
   useEffect(() => {
     // cleanup function is used when we dont want the timer to 
-    // keep running if we remove the App itself from UI
+    // keep running if we remove the App itself from UI i.e
+    // if the component is unmounted before the setInterval/setTimeout
+    // time runs out. For example in the above case, it is given 1000
+    // if the component is unmounted, ie if the component App
+    // is removed from the UI before the completion of 1000s
+    // ie if we remove App itself (which in turn contains Timer.jsx as component)
+    // then we don't want the timer to keep running, because the App
+    // itself is removed from UI, we don't want the timer to keep running
+    // so to stop the timer from running in such cases
+    // we use cleanup function
     return () => {
       clearInterval(timerId.current);
     };
