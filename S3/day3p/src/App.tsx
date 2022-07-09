@@ -26,6 +26,7 @@ function App() {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
+      
       <div>
         {loading ? (
           <div>Loading...</div>
