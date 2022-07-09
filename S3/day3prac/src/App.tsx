@@ -12,9 +12,12 @@ export type User = {
 
 function App() {
   const [text, setText] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [err, setError] = useState(false);
   const [data, setData] = useState<User[]>([]);
 
   const handleClick = () => {
+    setLoading(true);
     return axios
       .get(url, {
         params: {
@@ -23,14 +26,22 @@ function App() {
         },
       })
       .then((res) => {
+        setLoading(false);
+        setError(false);
         setData(res.data.items);
       })
       .catch((err) => {
+        setLoading(false);
+        setError(true);
         console.log(err);
       });
   };
 
-  return (
+  return loading ? (
+    <div>Loading...</div>
+  ) : err ? (
+    <div>Something went wrong...</div>
+  ) : (
     <div className="App">
       <div>
         <input
